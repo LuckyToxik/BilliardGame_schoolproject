@@ -23,8 +23,10 @@ namespace BilliardGame
             InitializeComponent();
             timer1.Enabled = true;
 
-            //test kulicky vektory
             kulicka.dx = 0.5;
+            //kulicka.dy = 0.5;
+            kulicka1.dx = -0.5;
+            
 
 
             //background
@@ -46,6 +48,11 @@ namespace BilliardGame
         private void timer1_Tick(object sender, EventArgs e)
         {
             kulicka.setDx(kulicka1);
+            kulicka.setDy(kulicka1);
+
+            kulicka.Collision(kulicka1);
+            kulicka1.Collision(kulicka);
+
             gamefield.Invalidate();
 
             this.textBox_dx.Text = kulicka.dx.ToString();
@@ -58,6 +65,11 @@ namespace BilliardGame
         {
             this.label_x.Text = e.X.ToString();
             this.label_y.Text = e.Y.ToString();
+
+            
         }
+
+
+
     }
 }

@@ -74,13 +74,40 @@ namespace BilliardGame
             
                 
             }
-    
+        }
+        //špatně :)) pouze pro 1D :--)))
+        public void setDy(Ball ball)
+        {
+            if (circlesColliding(Convert.ToInt32(this.X), Convert.ToInt32(this.Y), this.radius, Convert.ToInt32(ball.X), Convert.ToInt32(ball.Y), ball.radius))
+            {
+                //výpočet celkové rychlosti obou těles po srážce
+
+                double v = (this.mass * this.dy + ball.mass * ball.dy) / (this.mass + ball.mass);
+
+                //získání souřadnice bababab X??? :)) deited - na +
+
+                double vk1 = ball.mass * 1 * (this.dy - ball.dy) / (this.mass + ball.mass);
+                double vk2 = this.mass * 1 * (this.dy - ball.dy) / (this.mass + ball.mass);
+
+                this.dy = v - vk1;
+                ball.dy = v + vk2;
 
 
+            }
+        }
+
+        public void Collision(Ball ball)
+        {
+
+            if (circlesColliding(Convert.ToInt32(this.X), Convert.ToInt32(this.Y), this.radius, Convert.ToInt32(ball.X), Convert.ToInt32(ball.Y), ball.radius))
+            {
+           
+            }
         }
 
 
 
+    
 
 
 
@@ -88,27 +115,28 @@ namespace BilliardGame
 
 
 
-        /*
-            this.dx =dx* 0.9;
-            this.dy = dy* 0.9;
 
-            double newBall_x = (this.X + this.dx) * 0.9;
-        double newBall_y = (this.Y + this.dy) * 0.9;
+    /* NA ZDI
+        this.dx =dx* 0.9;
+        this.dy = dy* 0.9;
 
-
-            if (newBall_x< 20+50 || newBall_x> 1280-20-55) dx = -dx;
-            if (newBall_y< 20+62 || newBall_y> 720-20-65) dy = -dy;
-
-            this.X += dx;
-            this.Y += dy;
+        double newBall_x = (this.X + this.dx) * 0.9;
+    double newBall_y = (this.Y + this.dy) * 0.9;
 
 
+        if (newBall_x< 20+50 || newBall_x> 1280-20-55) dx = -dx;
+        if (newBall_y< 20+62 || newBall_y> 720-20-65) dy = -dy;
 
- 
-            */
+        this.X += dx;
+        this.Y += dy;
 
 
-    }
+
+
+        */
+
+
+}
 }
 
 
